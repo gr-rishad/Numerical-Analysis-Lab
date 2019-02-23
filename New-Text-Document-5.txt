@@ -1,0 +1,66 @@
+Scanner sc=new Scanner(System.in);
+        
+        float upper;
+        float lower;
+        float bisectionRange;
+        float fOFxm;
+        float fOFxl;
+        float fOFxu;
+        float midValue=0;
+        float errorCount;
+        float pastMidvalue=0;
+        int i;
+        System.out.println("Enter Your Upper Value");
+        upper=sc.nextFloat();
+        
+        System.out.println("Enter Your Lower Value");
+        lower=sc.nextFloat();
+        
+        System.out.println("Enter The Limit Of Iteration You Want to Find");
+        bisectionRange=sc.nextFloat(); 
+        
+        fOFxu=(float)(Math.pow(upper, 2)-3);
+        System.out.println("f(xu): "+fOFxu);
+        
+        fOFxl=(float)(Math.pow(lower, 2)-3);
+        System.out.println("f(xl): "+fOFxl);
+       
+        for(i=1; i<bisectionRange || i==bisectionRange; i++){
+        if(fOFxu*fOFxl>0 || fOFxu*fOFxl==0){
+         System.out.println("There is no root,itearation is not possible beacause two values are positive");
+         break;
+       }
+       else if(fOFxu*fOFxl <0){
+       System.out.println("iteration : "+i);
+       midValue=(upper+lower)/2 ;
+       float presentMidvalue=midValue;
+       System.out.println("xm(Mid Value) :"+midValue);
+       fOFxm=(float)(Math.pow(midValue, 2)-3);
+       System.out.println("f(xm):"+fOFxm);
+       if(fOFxl*fOFxm>0){
+       lower=midValue;
+       upper=upper;
+       System.out.println("f(xl): "+lower);
+       System.out.println("f(xu): "+upper);
+       }
+       if(fOFxl*fOFxm<0){
+       lower=lower;
+       upper=midValue;
+       System.out.println("f(xl): "+lower);
+       System.out.println("f(xu): "+upper);
+       }
+       if(i==1){
+       System.out.println("Eror count is not possible untill second iteration");
+       }
+       if(i>1){
+       errorCount=(float)(((presentMidvalue-pastMidvalue)/presentMidvalue))*100;
+       System.out.println("Eror : "+Math.abs(errorCount)+"%");
+       
+       }
+       
+       }
+       pastMidvalue=midValue;
+       }
+       
+}
+}

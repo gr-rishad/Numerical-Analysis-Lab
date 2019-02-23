@@ -1,0 +1,56 @@
+#include <stdio.h>
+double function(double x){
+    return x*x*x*x-x-10;
+
+}
+
+int main(){
+    double lowerLimit,higherLimit,Rpresent,Rprevious;
+    printf("Enter your lower limit:\n");
+    scanf("%lf",&lowerLimit);
+    printf("Enter your higher limit:\n");
+    scanf("%lf",&higherLimit);
+    int i;
+
+    for(i=1;i<9;i++){
+             Rprevious=higherLimit;
+
+            printf("=========== iteration  %d=======\n",i);
+
+    double functionOfLower=function(lowerLimit);
+    printf("%.5lf\n",functionOfLower);
+
+    double functionOfHigher=function(higherLimit);
+    printf("%.5lf\n",functionOfHigher);
+
+    double upp= functionOfHigher * (higherLimit-lowerLimit);
+    printf("%.5lf\n",upp);
+
+     double loo= functionOfHigher -functionOfLower;
+    printf("%.5lf\n",loo);
+
+    double root= higherLimit -(upp/loo);
+    printf("%.5lf\n",root);
+
+   Rpresent=root;
+
+    double error= ((Rpresent-Rprevious)/Rpresent)* 100;
+    error=fabs(error);
+    printf("%.5lf\n",error);
+    printf("Test   %lf\n",error);
+    if(error <= 0){
+        printf("Test   %lf\n",error);
+        i = 11;
+        return 0;
+        break;
+    }
+
+    lowerLimit=higherLimit;
+    higherLimit=root;
+    printf("Root == %.5lf\n",higherLimit);
+
+    }
+
+    return 0;
+
+}
